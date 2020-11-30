@@ -14,6 +14,7 @@ The tool was designed with the following features in mind:
 - The tool should run purely in Python, and not require Jupyter/IPython notebooks.
 
 ## Requirements
+- Git
 - Any recent version of Python 3. The code has been tested on 3.8.6 only.
 - Pip requirements found in requirements.txt - **These can either be installed using the included .bat file on Windows, or manually using the command 'pip3 install -r requirements.txt'**
 - For increased performance, you can install CUDA 10.1 to utilise any available nVidia GPU, however any modern CPU should be fast enough.
