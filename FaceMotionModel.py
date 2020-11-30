@@ -24,7 +24,7 @@ from colorama import Fore
 from PIL import Image
 from datetime import datetime
 import time
-
+from pathlib import Path
 
 def clear_term():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -55,7 +55,7 @@ if not os.path.exists("./first_order_model"):
     os.system("git clone https://github.com/AliaksandrSiarohin/first-order-model first_order_model")  # CLONE THE MODEL
 clear_term()
 # cd into cloned repo (/first_order_model)
-os.chdir(OG_BASE_DIR + "first_order_model")
+os.chdir(Path(OG_BASE_DIR + "first_order_model"))
 BASE_DIR = os.getcwd() + "\\"
 os.system(
     "curl -A \"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0\" "
@@ -79,7 +79,7 @@ if not os.path.exists("ffmpeg.exe") and os.name == "nt":
 
 
 clear_term()
-os.chdir(OG_BASE_DIR)
+os.chdir(Path(OG_BASE_DIR))
 
 files = ['modules', 'sync_batchnorm', 'config']
 for f in files:
@@ -156,14 +156,18 @@ try:
 except OSError as e:
     pass
 # make dir /video/intermediate
-os.chdir(OG_BASE_DIR + "videos")
+os.chdir(Path(OG_BASE_DIR + "videos"))
 os.mkdir("intermediate")
 os.mkdir("final")
-os.chdir(OG_BASE_DIR)
+os.chdir(Path(OG_BASE_DIR))
 clear_term()
 print(Fore.GREEN + "Now animating and processing frames.")
 source_image = imageio.imread('aligned_images/face_01.png')
 source_image = resize(source_image, (256, 256))[..., :3]
+# placeholder_bytes = base64.b64decode(
+#    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=')
+# placeholder_image = imageio.imread(placeholder_bytes, '.png')
+# placeholder_image = resize(placeholder_image, (256, 256))[..., :3]
 
 driving_video = imageio.mimread(vid, memtest=False)
 driving_video = [resize(frame, (256, 256))[..., :3] for frame in driving_video]
@@ -214,7 +218,7 @@ print(Fore.GREEN + 'Assembly completed for ' + videoname)
 print(Fore.BLUE + 'Cleaning temporary files.')
 time.sleep(3)
 # Clean up temp files
-os.chdir(OG_BASE_DIR)
+os.chdir(Path(OG_BASE_DIR))
 temp_dirs = ["modules", "sync_batchnorm", "config", "raw_images", "aligned_images", "frames"]
 temp_files = ["animate.py", "augmentation.py", "frames_dataset.py", "logger.py", "align_images.py", "vox-cpk.path.tar",
               "run.py", "train.py", "reconstruction.py", "sound.mp3"]
