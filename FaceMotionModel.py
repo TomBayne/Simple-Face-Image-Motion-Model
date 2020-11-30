@@ -164,10 +164,6 @@ clear_term()
 print(Fore.GREEN + "Now animating and processing frames.")
 source_image = imageio.imread('aligned_images/face_01.png')
 source_image = resize(source_image, (256, 256))[..., :3]
-# placeholder_bytes = base64.b64decode(
-#    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=')
-# placeholder_image = imageio.imread(placeholder_bytes, '.png')
-# placeholder_image = resize(placeholder_image, (256, 256))[..., :3]
 
 driving_video = imageio.mimread(vid, memtest=False)
 driving_video = [resize(frame, (256, 256))[..., :3] for frame in driving_video]
