@@ -23,7 +23,7 @@ The tool was designed with the following features in mind:
 
 ## How to use
 - Ensure requirements are fulfilled.
-- Add a 256x256 jpg/png file named 'face.png' or 'face.jpg' into the root folder. This will be used as the primary image for the output.
+- Add a jpg/png file named 'face.png' or 'face.jpg' into the root folder. This will be used as the primary image for the output.
 - Add a MP4 video file named 'driving.mp4' into the root folder. This will be used to determine animations and motion to be applied to the image.
 - Run FaceMotionModel.py, or run 'run_windows.bat' if using Windows.
 - Output can be found in ./results
